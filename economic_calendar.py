@@ -1,4 +1,3 @@
-# economic_calendar.py（最終版 - 中英文對照 + 兩步驟篩選 + 打包支援）
 import json
 import os
 import requests
@@ -7,8 +6,8 @@ from datetime import datetime
 import pytz
 import time
 from selenium import webdriver
-from selenium.webdriver.edge.service import Service
-from selenium.webdriver.edge.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -49,17 +48,18 @@ def get_events():
         raise FileNotFoundError(f"找不到 msedgedriver.exe！請放到 {driver_path}")
 
     options = Options()
-    options.add_argument('--headless')
+    options.add_argument('--headless=new')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--window-size=1920,1080')
     options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option('useAutomationExtension', False)
-    options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
-    options.add_argument('--timezone=Asia/Taipei')
+    options.add_argument('--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36')
 
-    service = Service(driver_path)
-    driver = webdriver.Edge(service=service, options=options)
+    service = Service()
+    driver = webdriver.Chrome(service=service, options=options)
     driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => false});")
 
     url = "https://www.forexfactory.com/"
@@ -260,4 +260,5 @@ if __name__ == "__main__":
         try:
             requests.post(DISCORD_WEBHOOK_URL, json={"content": f"🛑經濟日曆錯誤：{str(e)}"})
         except:
+
             pass
