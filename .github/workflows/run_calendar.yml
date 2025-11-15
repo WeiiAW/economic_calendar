@@ -12,20 +12,14 @@ jobs:
       - name: Checkout 程式碼
         uses: actions/checkout@v4
 
-      - name: 顯示當前目錄
+      - name: 切換到倉庫根目錄（關鍵！）
+        run: |
+          cd /home/runner/work/economic_calendar/economic_calendar
+
+      - name: 顯示當前目錄與檔案
         run: |
           pwd
           ls -la
-
-      - name: 確認程式檔案存在
-        run: |
-          if [ ! -f "economic_calendar.py" ]; then
-            echo "錯誤：找不到 economic_calendar.py"
-            echo "目前目錄內容："
-            ls -la
-            exit 1
-          fi
-          echo "找到 economic_calendar.py"
 
       - name: 設定 Python
         uses: actions/setup-python@v5
