@@ -1,0 +1,24 @@
+{
+  "currencies": ["USD", "EUR", "JPY", "GBP", "XAU", "XAG", "OIL"],
+  "events": {
+    "ISM Manufacturing PMI": "ISM 製造業 PMI",
+    "ISM Non-Manufacturing PMI": "ISM 非製造業 PMI",
+    "Markit Manufacturing PMI": "Markit 製造業 PMI",
+    "ADP Non-Farm Employment Change": "ADP 就業人數變化（小非農）",
+    "CPI m/m": "消費者物價指數 月比",
+    "CPI y/y": "消費者物價指數 年比",
+    "Core CPI m/m": "核心 CPI 月比",
+    "PPI m/m": "生產者物價指數 月比",
+    "Retail Sales m/m": "零售銷售 月比",
+    "Core Retail Sales m/m": "核心零售銷售 月比",
+    "PCE Price Index m/m": "PCE 物價指數 月比",
+    "GDP q/q": "GDP 季比",
+    "FOMC Rate Decision": "FOMC 利率決策",
+    "Non-Farm Employment Change": "非農就業人口變化",
+    "Unemployment Rate": "失業率",
+    "Consumer Confidence": "消費者信心指數",
+    "Crude Oil Inventories": "原油庫存",
+    "API Weekly Crude Oil Stock": "API 每周原油庫存",
+    "FOMC Member Speaks": "FOMC 委員講話"
+  }
+}
